@@ -1,0 +1,98 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #fafafa;
+  font-family: 'Roboto', sans-serif;
+  /* 就是通过给父盒子添加flex属性，来控制子盒子的位置和排列方式 */
+  display: flex;
+  /* flex-direction：设置主轴的方向 */
+  flex-direction: column;
+  /* align-items：设置侧轴上的子元素排列方式（单行） */
+  align-items: center;
+  /* justify-content：设置主轴上的子元素排列方式 */
+  justify-content: center;
+  /* 1vh=1/100视口高度 */
+  height: 100vh;
+  /* overflow为溢出（容器），当内容超出容器时只需添加overflow属性值为hidden， 就可以把超出容器的部分隐藏起来； */
+  overflow: hidden;
+
+}
+.magic{
+  background-color: #f9ca24;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  /* letter-spacing属性用来增加或减少字符或汉字之间的距离，默认值为0 */
+  letter-spacing: 1px;
+  /* box-shadow:h-shadow v-shadow blur spread color inset; */
+  box-shadow: 0 3px rgba(249, 202, 36, 0.5);
+  z-index: 100;
+}
+/* :focus 伪类选择器用于获得焦点的表单元素。 */
+.magic:focus{
+  /*   outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。,none的话点击无轮廓*/
+  outline: none;
+}
+/* :active “激活”： 鼠标点击标签，但是不松手时。
+:focus 是某个标签获得焦点时的样式（比如某个输入框获得焦点） */
+.magic:active{
+  /* 去掉盒子阴影 */
+  box-shadow: none;
+  transform: translateY(2px);
+}
+.boxes{
+  display: flex;
+  /* flex-wrap:设置子元素是否换行 */
+  flex-wrap: wrap;
+  /* 设置主轴上的子元素排列方式 */
+  justify-content: space-around;
+  height: 500px;
+  width: 500px;
+  position: relative;
+  /* 从一种状态过渡到另一种状态，用于在一定的时间内进行元素平滑的过渡，这种效果可以在元素被单击，鼠标滑过，或者是其他的事件中触发，实现圆滑的以动画效果改变CSS属性的属性值。 */
+  transition: 0.4s ease;
+}
+.boxes.big{
+  width: 600px;
+  height: 600px;
+}
+ .boxes.big  .box{
+  transform: rotateZ(360deg);
+ }
+ .box{
+  background-image: url('https://media.giphy.com/media/TjAcxImn74uoDYVxFl/giphy.gif');
+  /* https://media.giphy.com/media/h2NxCschQ81ltiL9HV/giphy.gif */
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
+  position: relative;
+  height: 125px;
+  width: 125px;
+  transition: 0.4s ease;
+ }
+
+ .box::after{
+  content: '';
+  background-color: #f6e58d;
+  position: absolute;
+  top: 8px;
+  right: -15px;
+  height: 100%;
+  width: 15px;
+  transform: skewY(45deg);
+ }
+ .box::before {
+  content: '';
+  background-color: #f9ca24;
+  position: absolute;
+  bottom: -15px;
+  left: 8px;
+  height: 15px;
+  width: 100%;
+  transform: skewX(45deg);
+}
